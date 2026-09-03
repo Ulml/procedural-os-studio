@@ -1,0 +1,6 @@
+{
+  "input_kind": "prompt",
+  "output_kind": "file",
+  "input_text": "Rapport Q3",
+  "output_ref": "artifacts/one-pager.md"
+}

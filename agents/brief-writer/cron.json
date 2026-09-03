@@ -1,0 +1,5 @@
+{
+  "enabled": false,
+  "cron": "0 9 * * 1-5",
+  "goal": "Rédiger le brief du jour à partir des notes du workspace."
+}

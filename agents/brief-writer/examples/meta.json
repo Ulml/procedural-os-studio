@@ -1,0 +1,6 @@
+{
+  "input_kind": "prompt",
+  "output_kind": "file",
+  "input_text": "Résume la réunion produit de ce matin en une page.",
+  "output_ref": "artifacts/brief-writer.md"
+}
