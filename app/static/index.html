@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Procedural OS Studio</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand">
+        Procedural OS
+        <small>agentskills.io · runner agnostique</small>
+      </div>
+      <button class="btn gold" id="new-agent">+ Nouvel agent</button>
+      <div class="agents" id="agent-list"></div>
+    </aside>
+    <section class="main">
+      <header class="top">
+        <h1 id="title">Choisir un agent</h1>
+        <div class="tabs">
+          <button class="tab on" data-tab="chat">Chat</button>
+          <button class="tab" data-tab="instruction">Instruction</button>
+          <button class="tab" data-tab="memory">Mémoire</button>
+        </div>
+      </header>
+      <div class="workspace" id="tab-chat">
+        <div class="chat" id="chat"></div>
+        <form class="composer" id="composer">
+          <textarea id="prompt" placeholder="Objectif, ou demande de correction (ex. ajoute un sommaire)"></textarea>
+          <button class="btn" type="submit">Envoyer</button>
+        </form>
+      </div>
+      <div class="pane" id="tab-instruction">
+        <label>Description L1</label>
+        <input type="text" id="desc" />
+        <label>Instructions L2 (SKILL.md)</label>
+        <textarea class="edit" id="body"></textarea>
+        <label>Fichier L3 à éditer (ex. scripts/run.py)</label>
+        <input type="text" id="l3path" placeholder="scripts/run.py" />
+        <label>Contenu L3</label>
+        <textarea class="edit" id="l3content" style="min-height:160px"></textarea>
+        <p class="files" id="files"></p>
+        <div class="actions">
+          <button class="btn gold" id="save-instruction" style="width:auto">Enregistrer L2 / L3</button>
+        </div>
+      </div>
+      <div class="pane" id="tab-memory">
+        <p>Les demandes de correction du chat apparaissent ici. Coche celles à intégrer, puis pousse la skill reformatée vers GitHub.</p>
+        <div id="memory-list"></div>
+        <div class="actions">
+          <button class="btn gold" id="apply-memory" style="width:auto">Intégrer la sélection + reformater</button>
+          <button class="btn ghost" id="apply-push" style="color:#1e2a3a;border-color:#c9bda4">Intégrer et commit GitHub</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="modal-bg" id="modal">
+    <form class="modal" id="create-form">
+      <h2>Créer un agent</h2>
+      <label>Nom</label>
+      <input type="text" name="name" placeholder="brief-hebdo" required />
+      <label>L2 + L3 en langage naturel (non formaté)</label>
+      <textarea name="nl" class="edit" placeholder="Décris la procédure et le code éventuellement nécessaire. Une seule zone."></textarea>
+      <div class="row">
+        <div>
+          <label>Exemple d’entrée</label>
+          <select name="in_kind">
+            <option value="prompt">prompt utilisateur</option>
+            <option value="file">fichier</option>
+            <option value="http">http</option>
+          </select>
+          <textarea name="in_val" class="edit" style="min-height:90px" placeholder="Texte du prompt, chemin, ou URL"></textarea>
+        </div>
+        <div>
+          <label>Résultat final associé</label>
+          <select name="out_kind">
+            <option value="prompt">prompt / texte</option>
+            <option value="file">fichier</option>
+            <option value="http">http</option>
+          </select>
+          <textarea name="out_val" class="edit" style="min-height:90px" placeholder="Texte attendu, chemin produit, ou URL"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn gold" type="submit" style="width:auto">Créer et formater la skill</button>
+        <button class="btn ghost" type="button" id="cancel-create" style="color:#1e2a3a;border-color:#c9bda4">Annuler</button>
+      </div>
+    </form>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
