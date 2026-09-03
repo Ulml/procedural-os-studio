@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+data/conversations/
+workspace/
+artifacts/*.docx
+artifacts/*.xlsx
+artifacts/*.pptx
+artifacts/*.png
+.venv/
+.DS_Store
